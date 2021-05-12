@@ -8,8 +8,8 @@ const app = express();
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 const bodyParser= require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // Cors for cross origin allowance
 const cors = require("cors");
@@ -19,7 +19,7 @@ app.use(express.static('website'));
 
 
 // Setup Server
-const port = 3333;
+const port = 8000;
 app.listen(port, ()=>{
     console.log(`Server is running on port: ${port}`);
 })
