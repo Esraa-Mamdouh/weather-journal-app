@@ -59,6 +59,7 @@ const getServerData=async(url='')=>{
     const response = await fetch(url);
     try{
         const data =await response.json();
+        console.log(data);
     document.getElementById("date").innerHTML=data.date;
     document.getElementById("temp").innerHTML=data.temp;
     document.getElementById("content").innerHTML=data.content;
@@ -103,9 +104,9 @@ function generateListner(){
      
     .then(
         //console.log("3333333projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode,"temp= "+projectData.temp);
-        postData('/saveData', projectData),
+       ()=>{postData('/saveData', projectData),
         console.log("3333333projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode,"temp= "+projectData.temp)
-        )
+    })
     
     .then(
         getServerData('/updateUI')
