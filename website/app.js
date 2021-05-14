@@ -68,9 +68,14 @@ const getServerData=async(url='')=>{
     }
 }
 
+const outsider=async()=>{
+    projectData.temp = await getWeatherData(baseUrl)
+    console.log("nnnn "+projectData.temp)
+}
 /* Function called by event listener */
 // master function
 function generateListner(){
+    
     console.log("inside function");
     const btn=document.getElementById("generate");
     btn.addEventListener("click",(event)=>{
@@ -87,13 +92,21 @@ function generateListner(){
     projectData.date = newDate;
     //get the value of temp from GET 
     console.log("11111111projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode+"url= "+baseUrl);
-    projectData.temp =getWeatherData(baseUrl)
+    outsider()
+    
 //.then( //TODO: Add .then
         //console.log("3333333projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode,"temp= "+projectData.temp)
     //);
-    .then(console.log("3333333projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode,"temp= "+projectData.temp) )
-    postData('/saveData', projectData)
-    .then(getServerData('/updateUI'))
+     
+    .then(
+        //console.log("3333333projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode,"temp= "+projectData.temp);
+        postData('/saveData', projectData),
+        console.log("3333333projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode,"temp= "+projectData.temp)
+        )
+    
+    .then(
+        getServerData('/updateUI')
+    )
     })
 }
 
