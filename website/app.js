@@ -85,6 +85,10 @@ function generateListner(){
     event.preventDefault();
     console.log("zip= "+document.getElementById("zip").value)
     zipCode=document.getElementById("zip").value;
+    if(zipCode== ""){
+        alert("please enter zip code")
+    }
+    else{
     baseUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${key}&units=metric`;
     //get value of feeling and set it to object
     projectData.content= document.getElementById("feelings").value;
@@ -106,7 +110,7 @@ function generateListner(){
     
     .then(
         getServerData('/updateUI')
-    )
+    )}
     })
 }
 
