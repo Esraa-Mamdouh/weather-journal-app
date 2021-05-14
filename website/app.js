@@ -69,6 +69,8 @@ function generateListner(){
     baseUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${key}&units=metric`;
     //get value of feeling and set it to object
     projectData.content= document.getElementById("feelings").value;
+    //get date value 
+    projectData.date = newDate;
     //get the value of temp from GET 
     console.log("11111111projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode+"url= "+baseUrl);
     projectData.temp =getWeatherData(baseUrl)
