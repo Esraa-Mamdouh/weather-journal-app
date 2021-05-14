@@ -15,15 +15,15 @@ body{
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
 }
-
+/*
 .holder{
 
-}
+}*/
 
 .entry{
     background: rgba(59, 74, 107, .4);
 }
-
+/*
 #entryHolder{
 
 }
@@ -45,7 +45,7 @@ body{
 }
 .title{
 
-}
+}*/
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{

@@ -1,7 +1,7 @@
 /* Global Variables */
+let zipCode;
 const key = "dde3113fea23cd79b11cd0d9908ec7d8";
-const zipCode=document.getElementById("zip").value;
-const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${key}&units=metric`;
+let baseUrl ;
 projectData = {};
 
 //let baseURL= `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${key}&units=metric`;
@@ -23,7 +23,7 @@ const postData = async (url='',data={})=>{
     headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(projectData)
+      body: JSON.stringify(data)
     })
 }
 
@@ -36,6 +36,51 @@ projectData.date = newDate;
 //3.user response (from UI)
 }
 
+
+/* Function to GET Web API Data*/
+//TODO: three parameters (base, zip,key)
+const getWeatherData= async(url='')=>{
+    const response = await fetch(url);
+    try{
+    const data= await response.json();
+    //const data= response;
+    //console.log("222responseee= "+data)
+    console.log(data);
+    //TODO return response.json();
+    console.log(data.main.temp);
+    return data.main.temp;}
+    catch(error){
+        console.log("error= "+error);
+    }
+}
+
+/* Function called by event listener */
+// master function
+function generateListner(){
+    console.log("inside function");
+    const btn=document.getElementById("generate");
+    btn.addEventListener("click",(event)=>{
+        console.log("inside button");
+    //TODO: CHECK VALIDATION(empty string and entered numvber)
+    //get the value of zip code
+    event.preventDefault();
+    console.log("zip= "+document.getElementById("zip").value)
+    zipCode=document.getElementById("zip").value;
+    baseUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${key}&units=metric`;
+    //get value of feeling and set it to object
+    projectData.content= document.getElementById("feelings").value;
+    //get the value of temp from GET 
+    console.log("11111111projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode+"url= "+baseUrl);
+    projectData.temp =getWeatherData(baseUrl)
+//.then( //TODO: Add .then
+        //console.log("3333333projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode,"temp= "+projectData.temp)
+    //);
+    .then(console.log("3333333projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode,"temp= "+projectData.temp) )
+    postData('/saveData', projectData);
+    })
+}
+
+generateListner();
 /*
 const getWeather = async (url="")=>{
     const res = fetch(url);

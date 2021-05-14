@@ -34,7 +34,8 @@ app.post('/saveData',(req,res)=>{
     projectData.date= data.date;
     projectData.content= data.content;
     //print projectData object content
-    console.log("projectData= "+projectData);
+    console.log("projectData= ");
+    console.log(projectData);
     //TODO: send to app indication it was saved successfully?
 })
 
