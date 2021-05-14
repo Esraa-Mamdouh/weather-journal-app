@@ -39,5 +39,14 @@ app.post('/saveData',(req,res)=>{
     //TODO: send to app indication it was saved successfully?
 })
 
+//GET data and update UI 
+app.get('/updateUI',(req,res)=>{
+    console.log("servaaaar")
+    res.send(projectData);
+
+}
+
+)
+
 //GET data in projectData object to update UI 
 //app.get()

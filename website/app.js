@@ -29,12 +29,12 @@ const postData = async (url='',data={})=>{
 
 //create object e will send in postData function
 //TODO
-function createDataObjet(){
+/*function createDataObjet(){
 //1. temp (from GET ApI)
 //2. date
 projectData.date = newDate;
 //3.user response (from UI)
-}
+}*/
 
 
 /* Function to GET Web API Data*/
@@ -49,6 +49,20 @@ const getWeatherData= async(url='')=>{
     //TODO return response.json();
     console.log(data.main.temp);
     return data.main.temp;}
+    catch(error){
+        console.log("error= "+error);
+    }
+}
+
+/* Function to GET Project Data */
+const getServerData=async(url='')=>{
+    const response = await fetch(url);
+    try{
+        const data =await response.json();
+    document.getElementById("date").innerHTML=data.date;
+    document.getElementById("temp").innerHTML=data.temp;
+    document.getElementById("content").innerHTML=data.content;
+    } 
     catch(error){
         console.log("error= "+error);
     }
@@ -78,7 +92,8 @@ function generateListner(){
         //console.log("3333333projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode,"temp= "+projectData.temp)
     //);
     .then(console.log("3333333projectData.content= "+projectData.content+"projectData.date= "+newDate+"zip=  "+zipCode,"temp= "+projectData.temp) )
-    postData('/saveData', projectData);
+    postData('/saveData', projectData)
+    .then(getServerData('/updateUI'))
     })
 }
 
