@@ -23,3 +23,20 @@ const port = 8000;
 app.listen(port, ()=>{
     console.log(`Server is running on port: ${port}`);
 })
+
+//POST API& input data to server and save it inside projectData object 
+app.post('/saveData',(req,res)=>{
+    
+    const data=req.body;
+    //print body content
+    console.log(data);
+    projectData.temp= data.temp;
+    projectData.date= data.date;
+    projectData.content= data.content;
+    //print projectData object content
+    console.log("projectData= "+projectData);
+    //TO DO: send to app indication it was saved successfully?
+})
+
+//GET data in projectData object to update UI 
+//app.get()
