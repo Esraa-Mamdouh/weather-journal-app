@@ -41,10 +41,13 @@ projectData.date = newDate;
 //TODO: three parameters (base, zip,key)
 const getWeatherData= async(url='')=>{
     const response = await fetch(url);
+    console.log("weather data response= ");
+    console.log(response);
     try{
     const data= await response.json();
     //const data= response;
     //console.log("222responseee= "+data)
+    console.log("weather data= ");
     console.log(data);
     //TODO return response.json();
     console.log(data.main.temp);
@@ -55,10 +58,11 @@ const getWeatherData= async(url='')=>{
 }
 
 /* Function to GET Project Data */
-const getServerData=async(url='')=>{
+const getServerData=async(url='/updateUI')=>{
     const response = await fetch(url);
     try{
         const data =await response.json();
+        console.log("data= ");
         console.log(data);
     document.getElementById("date").innerHTML=data.date;
     document.getElementById("temp").innerHTML=data.temp;
@@ -109,7 +113,7 @@ function generateListner(){
     })
     
     .then(
-        getServerData('/updateUI')
+        getServerData
     )
     })
 }
