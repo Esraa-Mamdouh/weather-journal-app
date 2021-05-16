@@ -58,7 +58,7 @@ const getWeatherData= async(url='')=>{
 }
 
 /* Function to GET Project Data */
-const getServerData=async(url='/updateUI')=>{
+const getServerData=async(url='')=>{
     const response = await fetch(url);
     try{
         const data =await response.json();
@@ -92,7 +92,7 @@ function generateListner(){
     zipCode=document.getElementById("zip").value;
     if(zipCode== ""){
         alert("please enter zip code")}
-   
+    else{
     baseUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${key}&units=metric`;
     //get value of feeling and set it to object
     projectData.content= document.getElementById("feelings").value;
@@ -113,8 +113,11 @@ function generateListner(){
     })
     
     .then(
-        getServerData
-    )
+     ()=> { 
+         getServerData('/updateUI');
+    }
+       
+    )}
     })
 }
 
