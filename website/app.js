@@ -2,7 +2,11 @@
 let zipCode;
 const key = "dde3113fea23cd79b11cd0d9908ec7d8";
 let baseUrl ;
-projectData = {};
+projectData = {
+    data="",
+    temp="",
+    content="",
+};
 
 //let baseURL= `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${key}&units=metric`;
 // Create a new date instance dynamically with JS
