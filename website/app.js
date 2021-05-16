@@ -64,9 +64,9 @@ const getServerData=async(url='')=>{
         const data =await response.json();
         console.log("data= ");
         console.log(data);
-    document.getElementById("date").innerHTML=data.date;
-    document.getElementById("temp").innerHTML=data.temp;
-    document.getElementById("content").innerHTML=data.content;
+    document.getElementById("date").innerHTML="date: "+data.date;
+    document.getElementById("temp").innerHTML="temperature: "+data.temp;
+    document.getElementById("content").innerHTML="feeling: "+data.content;
     } 
     catch(error){
         console.log("error= "+error);

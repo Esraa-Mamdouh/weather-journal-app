@@ -7,9 +7,9 @@ body{
     display: grid;
     grid-auto-rows: minmax(150px, auto);
     /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
+    height:max-content;
+    background:rgb(233, 219, 219);
+    color: rgb(128, 15, 128);
     justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
@@ -38,11 +38,14 @@ body{
 
 #content{
 
-}
+}*/
 
 .headline {
-
+    text-align: center;
+    color: rgb(128, 15, 128);
+    font-size: 50px;
 }
+/*
 .title{
 
 }*/
