@@ -3,9 +3,7 @@ let zipCode;
 const key = "dde3113fea23cd79b11cd0d9908ec7d8";
 let baseUrl ;
 projectData = {
-    data="",
-    temp="",
-    content="",
+
 };
 
 //let baseURL= `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${key}&units=metric`;
@@ -63,6 +61,7 @@ const getWeatherData= async(url='')=>{
 
 /* Function to GET Project Data */
 const getServerData=async(url='')=>{
+    console.log("inside getServerData");
     const response = await fetch(url);
     try{
         const data =await response.json();
@@ -118,6 +117,7 @@ function generateListner(){
     
     .then(
      ()=> { 
+         console.log("inside .then");
          getServerData('/updateUI');
     }
        

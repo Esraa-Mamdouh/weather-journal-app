@@ -1,5 +1,9 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+projectData = {
+    date:"",
+    temp:"",
+    content:"",
+};
 
 // Require Express to run server and routes
 const express = require("express");
@@ -34,7 +38,7 @@ app.post('/saveData',(req,res)=>{
     projectData.date= data.date;
     projectData.content= data.content;
     //print projectData object content
-    console.log("projectData= ");
+    console.log("1save data projectData= ");
     console.log(projectData);
     //TODO: send to app indication it was saved successfully?
 })
